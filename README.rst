@@ -19,6 +19,7 @@ A quick example
 ===================
 
 example::
+  
   import sys
   from multiprocessing import Process
   from DiskQueue import Queue
