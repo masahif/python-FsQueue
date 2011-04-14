@@ -18,7 +18,7 @@ setup(
     classifiers = [
         'Environment :: Console',
         'License :: OSI Approved :: Python Software Foundation License',
-        'OperatingSystem :: OS Independent',
+        'Operating System :: POSIX',
         'Programming Language :: Python',
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

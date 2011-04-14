@@ -4,6 +4,10 @@ FsQueue
 
 python FsQueue is a elastic synchronized queue class.
 
+Source code
+===========
+You can find here
+https://github.com/masahif/python-FsQueue
 
 Features
 ===========
@@ -22,37 +26,48 @@ example::
   
   import sys
   from multiprocessing import Process
-  from DiskQueue import Queue
+  from FsQueue import Queue
   from time import sleep
   
-  MAX_TRY = 1000
-  
-  def put(q):
-      for i in xrange(MAX_TRY):
+  def put(q, num):
+      for i in xrange(num):
           print "put:%d" % i
           sys.stdout.flush()
-          q.put('hoge')
+          q.put(i)
   
-  def get(q):
-      for i in xrange(MAX_TRY):
-          print "get:%d" % i
+  def get(q, num):
+      for i in xrange(num):
           sys.stdout.flush()
-          q.get()
+          print "get:%d %d" % (i, q.get())
           q.task_done()
   
   def process_test():
-      q = Queue()
-      p0 = Process(target=put, args=(q,))
-      p1 = Process(target=get, args=(q,))
-      p1.start()
+      q = Queue(init=True)
+      p0 = Process(target=put, args=(q,1000))
       p0.start()
       p0.join()
+      p1 = Process(target=get, args=(q,500))
+      p2 = Process(target=get, args=(q,500))
+      p1.start()
+      p2.start()
       p1.join()
-
+      p2.join()
+  
+      if not q.empty():
+          print "Queue should be empty."
+          raise Exception
+  
+  if __name__ == '__main__':
+      process_test()
+  
 
 Recent Change Log
 ======================
 
-v1.0
+v1.2
+-------
+ * A quick example was changed.
+
+v1.1
 -------
  * First release

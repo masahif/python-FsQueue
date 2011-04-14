@@ -5,7 +5,7 @@
 
 __author__ = 'FUKUDA Masahiro'
 __author_email__ = 'masahiro@fukuda.org'
-__version__ = '1.1'
+__version__ = '1.2'
 __all__ = ['Empty', 'Full', 'Queue']
 
 import tempfile, os
