@@ -1,24 +1,26 @@
-"""
-FsQueue
-"""
+from distutils.core import setup
+import os, sys, FsQueue
 
-from setuptools import setup, find_packages
-import sys
-
-import FsQueue
 
 sys.path.append('./test')
 
 setup(
-    name = 'FsQueue',
-    py_modules=['FsQueue'],
-    version = FsQueue.__version__,
+    name='FsQueue',
+    version=FsQueue.__version__,
     author=FsQueue.__author__,
-    url = 'https://github.com/masahif/python-FsQueue',
-    license= FsQueue.__license__,
+    author_email=FsQueue.__author_email__,
+    py_modules=['FsQueue'],
+    scripts=[],
+    url='http://pypi.python.org/pypi/FsQueue/',
     description="Elastic queue based on filesystem.",
-    long_description = FsQueue.__doc__,
-    test_suite='test_fsqueue.suite',
+    long_description=open('README').read(),
 
+    classifiers = [
+        'Environment :: Console',
+        'License :: OSI Approved :: Python Software Foundation License',
+        'OperatingSystem :: OS Independent',
+        'Programming Language :: Python',
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'Topic :: Utilities',],
 )
-

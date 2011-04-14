@@ -1,13 +1,11 @@
-# -*- coding: utf-8 -*-
-#
-# FsQueue
-#   Elastic queue is based on filesystem.
-#   It's like almost same as Python's Queue.Queue.
-#
+""" FsQueue
+   Elastic queue is based on filesystem.
+   It's like almost same as Python's Queue.Queue.
+"""
 
-__author__ = 'FUKUDA Masahiro <masahiro@fukuda.org>'
-__license__ = 'Python License'
-__version__ = '1.0'
+__author__ = 'FUKUDA Masahiro'
+__author_email__ = 'masahiro@fukuda.org'
+__version__ = '1.1'
 __all__ = ['Empty', 'Full', 'Queue']
 
 import tempfile, os
@@ -40,7 +38,7 @@ class Queue(object):
     """Create a queue object.
     """
 
-    def __init__(self, maxsize=0, dir='/tmp/_dqueue', init=False):
+    def __init__(self, maxsize=0, dir='_tmp_fsqueue', init=False):
         self.base_dir = dir
         self.queue_dir = os.path.join(dir, 'queue')
         self.tmp_dir = os.path.join(dir, 'tmp')
